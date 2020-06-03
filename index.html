@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keypress Cube</title>
+    <style>
+        .red-box {
+            position: relative;
+            top: 0px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: palegreen;
+        }
+
+        .wrapper {
+            width: 500px;
+            height: 500px;
+            background-color: peru;
+            position: absolute;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="target-attr" class="red-box"></div>
+    </div>
+
+    <script>
+        let modifier = 50;
+
+        window.addEventListener('keydown', e => {
+            let eleTop = window.getComputedStyle(document.querySelector('#target-attr')).top;
+            let eleLeft = window.getComputedStyle(document.querySelector('#target-attr')).left;
+
+
+
+            console.log(eleTop, eleLeft);
+
+            switch (e.key) {
+                case 'ArrowUp':
+                    eleTopNew1 = `${parseInt(eleTop) - modifier}px`;
+                    document.getElementById("target-attr").style.top = eleTopNew1;
+                    break;
+                case 'ArrowDown':
+                    eleTopNew2 = `${parseInt(eleTop) + modifier}px`;
+                    document.getElementById("target-attr").style.top = eleTopNew2;
+                    break;
+                case 'ArrowLeft':
+                    eleLeftNew1 = `${parseInt(eleLeft) - modifier}px`;
+                    document.getElementById("target-attr").style.left = eleLeftNew1;
+                    break;
+                case 'ArrowRight':
+                    eleLeftNew2 = `${parseInt(eleLeft) + modifier}px`;
+                    document.getElementById("target-attr").style.left = eleLeftNew2;
+                    break;
+            }
+        });
+    </script>
+
+    <!-- 
+        https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+        https://zellwk.com/blog/css-values-in-js/
+     -->
+</body>
+
+</html>
